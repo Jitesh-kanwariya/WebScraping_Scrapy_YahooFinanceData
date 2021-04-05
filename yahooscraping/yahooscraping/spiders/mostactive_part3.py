@@ -17,7 +17,7 @@ class MostactiveSpider(scrapy.Spider):
         offset_list = [i * 25 for i in range(total_offsets)]
         for offset in offset_list:
             yield scrapy.Request(url=f'https://finance.yahoo.com/most-active?count=25&offset={offset}',
-                                 callback=self.get_stocks)
+                                 callback=self.load_pagination)
 
     def get_stocks(self, response):
         # Get all the stock symbols
